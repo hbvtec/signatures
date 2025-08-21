@@ -1,0 +1,19 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Helton Braga Valim
+N:Valim;Helton Braga;;;
+item1.EMAIL;TYPE=INTERNET:helton74@gmail.com
+item1.X-ABLabel:
+item2.TEL:48 9 99383806
+item2.X-ABLabel:
+ORG:HBVTEC Info
+TITLE:Diretor
+BDAY:19740204
+item3.URL:https\://heltonbvalim.github.io/curriculo/
+item3.X-ABLabel:Pessoal
+item4.URL:https\://www.linkedin.com/in/hbvtec/
+item4.X-ABLabel:Profissional
+PHOTO:https://lh3.googleusercontent.com/contacts/AG6tpzHERyn7-SWa-gNucJd-j5
+ 7zwwdU-OCRiVEIT6w27ATj-LJ_7veI
+CATEGORIES:myContacts
+END:VCARD
