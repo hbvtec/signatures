@@ -1,0 +1,41 @@
+Para colocar um **gradiente de cores** em uma `div` utilizando **CSS**, você pode usar a propriedade `background` com a função `linear-gradient` ou `radial-gradient`.
+
+### Exemplo com `linear-gradient` (gradiente linear):
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gradiente em uma div</title>
+  <style>
+    
+  </style>
+</head>
+<body>
+  <div class="minha-div"></div>
+</body>
+</html>
+```
+
+### Explicação:
+
+* `linear-gradient(to right, cor1, cor2)`: Cria um gradiente indo da `cor1` para a `cor2` da **esquerda para a direita**.
+* Você pode mudar a direção (`to bottom`, `to top`, `to left`, `45deg`, etc.).
+* Também pode adicionar mais cores:
+
+```css
+background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+```
+
+---
+
+### Exemplo com `radial-gradient` (gradiente radial):
+
+```css
+background: radial-gradient(circle, #ff7e5f, #feb47b);
+```
+
+Esse cria um gradiente circular do centro para as bordas.
+
+Se quiser, posso te ajudar a montar um gradiente com cores específicas que você escolher.
