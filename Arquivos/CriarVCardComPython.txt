@@ -1,0 +1,55 @@
+import base64
+
+# 1️⃣ Dados do usuário
+nome = input("Digite seu nome completo: ")
+telefone1 = input("Digite o primeiro telefone (ex: +5511999999999): ")
+telefone2 = input("Digite o segundo telefone (opcional, deixe em branco se não tiver): ")
+email = input("Digite seu email: ")
+url = input("Digite a URL do site (opcional): ")
+empresa = input("Digite o nome da empresa: ")
+cargo = input("Digite seu cargo/função: ")
+descricao = input("Digite a descrição da empresa: ")
+social1 = input("Digite o link da primeira rede social (opcional): ")
+social2 = input("Digite o link da segunda rede social (opcional): ")
+caminho_foto = input("Digite o caminho da foto (JPEG ou PNG): ")
+
+# 2️⃣ Ler e codificar a foto em Base64
+with open(caminho_foto, "rb") as f:
+    foto_bytes = f.read()
+
+foto_base64 = base64.b64encode(foto_bytes).decode('utf-8')
+
+# Quebrar linhas a cada 75 caracteres (recomendado pelo padrão vCard)
+linha_foto = '\n '.join(foto_base64[i:i+75] for i in range(0, len(foto_base64), 75))
+
+# 3️⃣ Determinar tipo da foto
+tipo_foto = "JPEG" if caminho_foto.lower().endswith((".jpg", ".jpeg")) else "PNG"
+
+# 4️⃣ Criar o conteúdo do vCard
+vcard = f"""BEGIN:VCARD
+VERSION:3.0
+FN:{nome}
+TEL;TYPE=CELL:{telefone1}"""
+if telefone2:
+    vcard += f"\nTEL;TYPE=CELL:{telefone2}"
+vcard += f"""
+EMAIL:{email}"""
+if url:
+    vcard += f"\nURL:{url}"
+vcard += f"""
+ORG:{empresa}
+TITLE:{cargo}
+NOTE:{descricao} 
+PHOTO;ENCODING=b;TYPE={tipo_foto}:{linha_foto}"""
+if social1:
+    vcard += f"\nX-SOCIALPROFILE:{social1}"
+if social2:
+    vcard += f"\nX-SOCIALPROFILE:{social2}"
+vcard += "\nEND:VCARD"
+
+# 5️⃣ Salvar em arquivo .vcf
+arquivo_saida = "meu_contato.vcf"
+with open(arquivo_saida, "w", encoding="utf-8") as f:
+    f.write(vcard)
+
+print(f"vCard criado com sucesso: {arquivo_saida}")

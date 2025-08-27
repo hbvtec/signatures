@@ -1,0 +1,13 @@
+import base64
+
+# Abra a imagem em modo binário. foto 3x4 com menos de 200Kb é o ideal.
+# O vCard suporta JPEG ou PNG.
+with open("foto.jpg", "rb") as f:
+    foto_bytes = f.read()
+
+# Codifique em Base64
+foto_base64 = base64.b64encode(foto_bytes).decode('utf-8')
+
+# Salve em um arquivo só para copiar depois, se quiser
+with open("foto_base64.txt", "w") as f:
+    f.write(foto_base64)
