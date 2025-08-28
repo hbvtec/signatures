@@ -1,0 +1,8 @@
+Instalar biblioteca de QR Code no PHP
+
+Usaremos a lib PHP QR Code (leve e sem dependências).
+
+Baixe o arquivo phpqrcode.php daqui (oficial):
+👉 https://sourceforge.net/projects/phpqrcode/
+
+Coloque o arquivo no mesmo diretório do seu projeto.
