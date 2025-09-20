@@ -1,0 +1,23 @@
+/meusite/
+│
+├── /assets/                 ← arquivos estáticos
+│   ├── /css/
+│   │    style.css
+│   ├── /js/
+│   │    script.js
+│   └── /img/
+│        fundo.jpg
+│        logo.svg
+│
+├── /includes/               ← partes reaproveitadas
+│   header.php
+│   footer.php
+│
+├── /pages/                  ← páginas internas
+│   home.php
+│   sobre.php
+│   contato.php
+│   produtos.php
+│
+├── index.php                ← roteador principal
+└── .htaccess                ← regras de URL amigável (Apache)

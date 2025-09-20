@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site com Marca d’água Global</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-height: 100vh; /* garante cobertura */
+    z-index: 0;
+  }
+
+  /* Fundo global semi-transparente */
+  body::before {
+    content: "";
+    position: fixed;   /* fica parado mesmo rolando */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: url('imgs/LogoConfianca.png') center/cover no-repeat;
+    opacity: 0.15;  /* ajuste a intensidade da marca d’água */
+    z-index: -1;    /* sempre atrás */
+  }
+
+  /* Exemplo de área de conteúdo */
+  main {
+    background: rgba(255,255,255,0.9); /* opcional: caixa clara */
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    border-radius: 10px;
+  }
+
+  iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    background: transparent; /* deixa passar a marca d’água */
+  }
+</style>
+</head>
+<body>
+  <main>
+    <h1>Página Inicial</h1>
+    <p>Conteúdo principal aqui. O fundo está por trás do site inteiro.</p>
+
+    <!-- Exemplo de conteúdo incorporado -->
+    <iframe src="https://www.example.com"></iframe>
+  </main>
+</body>
+</html>

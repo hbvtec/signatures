@@ -1,0 +1,18 @@
+@charset "UTF-8";
+/*@Autor : HeltonBValim*/
+/*CSS Padrão*/
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  background-color: black;
+  /* background: linear-gradient(to bottom, #000000, #ffffff); /* direção: de cima para baixo */
+ }
+
+ body {
+  color: #ffffff;
+ }

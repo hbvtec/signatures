@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exemplo Fundo Fixo</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    /* Imagem de fundo */
+    background-image: url('imgs/LogoConfianca.png');
+    background-size: cover;       /* Preenche a tela */
+    background-position: center;  /* Centraliza a imagem */
+    background-attachment: fixed; /* Fica fixa ao rolar */
+    background-repeat: no-repeat; /* Evita repetição */
+  }
+
+  /* Exemplo de conteúdo transparente */
+  .conteudo {
+    background: transparent; /* Fundo semi-transparente */
+    padding: 20px;
+    margin: 40px auto;
+    max-width: 600px;
+    border-radius: 10px;
+  }
+
+  iframe {
+    background: transparent; /* Deixa iframe sem cor de fundo */
+  }
+</style>
+</head>
+<body>
+  <div class="conteudo">
+    <h1>Minha Página</h1>
+    <p>Este é um exemplo de texto com fundo semi-transparente.</p>
+    <iframe src="https://www.example.com" width="100%" height="200"></iframe>
+  </div>
+</body>
+</html>

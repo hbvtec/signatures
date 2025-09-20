@@ -12,6 +12,5 @@
 		Para exibição de contatos personalizados
 		html padrão
 	-->
-  <div class="colordiv"></div>
 </body>
 </html>

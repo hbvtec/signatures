@@ -1,0 +1,103 @@
+@charset "UTF-8";
+/*@Autor : YOTZER3D - Helton B. Valim*/
+/*CSS Padrão para vcards*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+	height: 100%;
+}
+/* Centraliza todo o conteúdo na tela */
+body {
+	display: flex;
+	flex-direction: column; /* coloca um embaixo do outro */
+	align-items: center;    /* centraliza horizontalmente */
+	/* background: linear-gradient(to bottom, #000000, #ffffff); */
+	background-color: rgb(140, 140, 140);
+	font-family: Arial, sans-serif;
+	min-height: 100vh;
+	padding-top: 5vh;
+}
+
+.LogoYotzer {
+	position: absolute;
+	top: 10px;     /* distância do topo */
+	left: 10px;    /* distância da esquerda */
+	width: 60px;   /* ajuste o tamanho */
+	height: auto;
+	z-index: 2;    /* acima da marca d’água, mas abaixo do avatar se quiser */
+  }
+
+/* Container da foto + marca d’água */
+.foto {
+	position: relative;
+	width: 90%;          /* ocupa até 90% da tela */
+	max-width: 400px;         /* controla largura máxima */
+	padding: 40px 20px;
+	display: flex;
+	flex-direction: column; /* empilha itens */
+	justify-content: center;  /* já tem, mantém */
+	align-items: center;      /* já tem, mantém */
+	overflow: hidden;
+	border-radius: 12px;
+	background-color: transparent;
+	text-align: center;
+}
+
+/* Marca d’água */
+.foto::before {
+	display: flex;               
+	content: "";
+	justify-content: center;     
+	align-items: center;
+	position: absolute;
+	inset: 0; /* atalho para top, right, bottom, left = 0 */
+	background-image: url("../imgs/confianca/LogoConfianca.png"); /* caminho da marca d’água */
+	background-size: contain;   /* ajusta proporcionalmente */
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: 0;
+}
+
+/* Foto principal */
+.avatar {
+	width: 60%;      /* proporcional ao container */
+	max-width: 150px;
+	aspect-ratio: 1/1;   /* mantém quadrado */
+	border-radius: 50%;
+	object-fit: cover;
+	border: 7px solid #fff;
+	box-shadow: 0 4px 12px rgba(0,0,0,.2);
+	position: relative;
+	z-index: 1;
+}
+
+/* Texto abaixo da foto */
+.titulo {
+	position: relative;
+	z-index: 1;
+	font-weight: bold;
+	font-size: clamp(8px, 2.5vw, 32px); /* adapta entre 14px e 18px */
+	text-align: center;
+}
+
+.dados, .botao {
+	position: relative;
+	background-color: transparent;
+	font-weight: bold;
+	font-size: clamp(8px, 2.5vw, 24px); /* adapta entre 14px e 18px */
+}
+
+table {
+	margin: 0 auto; /* centraliza a tabela */
+	max-width: 50vw;
+	background-color: transparent;
+}
+
+.centro {
+	text-align: center; /*centralizar texto*/
+}
