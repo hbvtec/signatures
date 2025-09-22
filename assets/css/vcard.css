@@ -9,7 +9,7 @@
 }
 
 html, body {
-	height: 100%;
+	min-height: 100%;
 }
 /* Centraliza todo o conteúdo na tela */
 body {
@@ -17,7 +17,8 @@ body {
 	flex-direction: column; /* coloca um embaixo do outro */
 	align-items: center;    /* centraliza horizontalmente */
 	/* background: linear-gradient(to bottom, #000000, #ffffff); */
-	background-color: rgb(140, 140, 140);
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 	font-family: Arial, sans-serif;
 	min-height: 100vh;
 	padding-top: 5vh;
@@ -90,6 +91,11 @@ body {
 	background-color: transparent;
 	font-weight: bold;
 	font-size: clamp(8px, 2.5vw, 24px); /* adapta entre 14px e 18px */
+}
+
+.icone {
+	width: 4vh;   /* ajuste o tamanho */
+	height: auto;
 }
 
 table {
