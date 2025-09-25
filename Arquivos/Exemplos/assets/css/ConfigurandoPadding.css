@@ -1,0 +1,13 @@
+elemento {
+    padding-top: 10px;    /* topo */
+    padding-right: 15px;  /* direita */
+    padding-bottom: 20px; /* baixo */
+    padding-left: 5px;    /* esquerda */
+}
+
+padding: 10px; /* topo, direita, baixo, esquerda */
+
+padding: 5px 10px 15px;
+/* topo 5px, direita/esquerda 10px, baixo 15px */
+
+padding: 5px 10px 15px 20px;

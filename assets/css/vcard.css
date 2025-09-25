@@ -1,6 +1,6 @@
 @charset "UTF-8";
-/*@Autor : YOTZER3D - Helton B. Valim*/
-/*CSS Padrão para vcards*/
+/* @Autor : YOTZER3D - Helton B. Valim */
+/* CSS Padrão para vcards */
 
 * {
   margin: 0;
@@ -9,101 +9,188 @@
 }
 
 html, body {
-	min-height: 100%;
+	min-height: 100vh;
 }
+
 /* Centraliza todo o conteúdo na tela */
 body {
-	display: flex;
-	flex-direction: column; /* coloca um embaixo do outro */
-	align-items: center;    /* centraliza horizontalmente */
-	/* background: linear-gradient(to bottom, #000000, #ffffff); */
+	margin: .1em;
+	padding: .2em;
 	background-color: rgb(0, 0, 0);
 	color: rgb(255, 255, 255);
 	font-family: Arial, sans-serif;
 	min-height: 100vh;
-	padding-top: 5vh;
 }
 
-.LogoYotzer {
-	position: absolute;
-	top: 10px;     /* distância do topo */
-	left: 10px;    /* distância da esquerda */
-	width: 60px;   /* ajuste o tamanho */
-	height: auto;
-	z-index: 2;    /* acima da marca d’água, mas abaixo do avatar se quiser */
-  }
+.conteudo {
+	display: grid;
+	grid-template-columns: 100vw;
+	grid-template-rows: 35vh auto auto 20vh;
+	/* gap: .2vh; */
+	grid-template-areas: "header"
+						 "aside"
+						 "main"
+						 "footer";
+}
 
-/* Container da foto + marca d’água */
-.foto {
+header {
 	position: relative;
-	width: 90%;          /* ocupa até 90% da tela */
-	max-width: 400px;         /* controla largura máxima */
-	padding: 40px 20px;
-	display: flex;
-	flex-direction: column; /* empilha itens */
-	justify-content: center;  /* já tem, mantém */
-	align-items: center;      /* já tem, mantém */
 	overflow: hidden;
-	border-radius: 12px;
-	background-color: transparent;
-	text-align: center;
+}
+
+footer {
+	display: flex;
+	justify-content: center; /* centraliza horizontalmente */
+	align-items: center;     /* centraliza verticalmente */
+}  
+
+/* Formatação da Nossa Logo*/
+.NossaLogo {
+	position: absolute;
+	top: 5vw;	/* distância do topo */
+	left: 5vw;	/* distância da esquerda */
+	height: clamp(10vh, 10vw, 30vw);	/* ajuste o tamanho */
+	width: auto;
+	z-index: 0;	/* acima da marca d’água, mas abaixo do avatar se quiser */
 }
 
 /* Marca d’água */
-.foto::before {
-	display: flex;               
-	content: "";
-	justify-content: center;     
-	align-items: center;
+.marcadagua {
 	position: absolute;
-	inset: 0; /* atalho para top, right, bottom, left = 0 */
-	background-image: url("../imgs/confianca/LogoConfianca.png"); /* caminho da marca d’água */
-	background-size: contain;   /* ajusta proporcionalmente */
-	background-position: center;
-	background-repeat: no-repeat;
-	z-index: 0;
+	top: 50%;              /* central vertical */
+	left: 50%;             /* central horizontal */
+	transform: translate(-50%, -50%);
+	pointer-events: none;    /* não atrapalha clique */
+	height: 35vh;
+	width: auto;
+	object-fit: cover;
+	z-index: 1;
 }
 
-/* Foto principal */
-.avatar {
-	width: 60%;      /* proporcional ao container */
-	max-width: 150px;
-	aspect-ratio: 1/1;   /* mantém quadrado */
+/* Avatar - Foto Cliente */
+.FotoCliente {
+	position: absolute;
+	top: 50%;              /* central vertical */
+	left: 50%;             /* central horizontal */
+	transform: translate(-50%, -50%);
 	border-radius: 50%;
 	object-fit: cover;
 	border: 7px solid #fff;
 	box-shadow: 0 4px 12px rgba(0,0,0,.2);
-	position: relative;
-	z-index: 1;
+	height: clamp(100px, 39%, 200px);
+	width: auto;
+	z-index: 2;
 }
 
-/* Texto abaixo da foto */
-.titulo {
-	position: relative;
-	z-index: 1;
-	font-weight: bold;
-	font-size: clamp(8px, 2.5vw, 32px); /* adapta entre 14px e 18px */
-	text-align: center;
-}
-
-.dados, .botao {
-	position: relative;
-	background-color: transparent;
-	font-weight: bold;
-	font-size: clamp(8px, 2.5vw, 24px); /* adapta entre 14px e 18px */
-}
-
+/* Padrão para os ícones */
 .icone {
-	width: 4vh;   /* ajuste o tamanho */
-	height: auto;
+	width: 3vw;	/* ajuste o tamanho */
+	height: auto;	/* mantém a proporção */
 }
 
 table {
-	margin: 0 auto; /* centraliza a tabela */
+	margin: 0 auto;	/* centraliza a tabela */
+	vertical-align: middle;
 	max-width: 50vw;
 	background-color: transparent;
 }
 
-.centro {
+tr.espaco td {
+    height: 3vh; /* define a altura do “espaço” */
+    padding: 0;
+    border: none;
+}
+
+.botao {
+	display: flex;
+	align-items: center;
+	vertical-align: middle;
+	gap: 1.5vh;              /* espaço entre ícone e texto */
+	padding: 10px;
+	border: none;
+	border-radius: 3px;
+	background-color: #707070;
+	color: white;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+		.botao:hover {
+			background-color: #005fa3;
+		} 
+
+.entrelinhas {
+	padding-top: 9vw;
+	padding-bottom: 9vw;
+}
+
+.identacao {
+	text-indent: 5em;
+}
+
+.centralizado {
 	text-align: center; /*centralizar texto*/
 }
+
+.centro {
+	display: flex;
+	justify-content: center; /* horizontal */
+	align-items: center;     /* vertical */
+}  
+
+.justificado {
+	text-align: justify;
+}
+
+.negrito {
+	font-weight: bold;
+}
+
+.italico {
+	font-style: italic;
+}
+
+.bg-none {
+	background: transparent;
+}
+
+/*Fontes redimensionáveis*/
+.fs4 { font-size: calc(4px + 0.4vw) }
+.fs5 { font-size: calc(5px + 0.5vw) }
+.fs6 { font-size: calc(6px + 0.6vw) }
+.fs7 { font-size: calc(7px + 0.7vw) }
+.fs8 { font-size: calc(8px + 0.8vw) }
+.fs9 { font-size: calc(9px + 0.9vw) }
+.fs10 { font-size: calc(10px + 1vw) }
+.fs11 { font-size: calc(11px + 1.1vw) }
+.fs12 { font-size: calc(12px + 1.2vw) }
+.fs13 { font-size: calc(13px + 1.3vw) }
+.fs14 { font-size: calc(14px + 1.4vw) }
+.fs15 { font-size: calc(15px + 1.5vw) }
+.fs16 { font-size: calc(16px + 1.6vw) }
+.fs17 { font-size: calc(17px + 1.7vw) }
+.fs18 { font-size: calc(18px + 1.8vw) }
+.fs19 { font-size: calc(19px + 1.9vw) }
+.fs20 { font-size: calc(20px + 2vw) }
+.fs21 { font-size: calc(21px + 2.1vw) }
+.fs22 { font-size: calc(22px + 2.2vw) }
+.fs23 { font-size: calc(23px + 2.3vw) }
+.fs24 { font-size: calc(24px + 2.4vw) }
+.fs25 { font-size: calc(25px + 2.5vw) }
+.fs26 { font-size: calc(26px + 2.6vw) }
+.fs27 { font-size: calc(27px + 2.7vw) }
+.fs28 { font-size: calc(28px + 2.8vw) }
+.fs29 { font-size: calc(29px + 2.9vw) }
+.fs30 { font-size: calc(30px + 3vw) }
+/**/
+
+/*
+
+background: linear-gradient(to bottom, #ffffff, #000000);  para aplicar no body
+
+width: clamp(80px, 20vw, 150px);  largura responsiva 
+height: auto;                     altura proporcional
+border-radius: 50%;    se quiser foto redonda
+object-fit: cover;    mantém proporção e corta excesso
+
+*/
