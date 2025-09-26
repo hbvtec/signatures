@@ -155,6 +155,18 @@ tr.espaco td {
 	background: transparent;
 }
 
+a {
+	text-decoration: none; /* remove sublinhado do texto */
+	border: none;          /* remove borda do link */
+	outline: none;         /* remove contorno ao focar */
+}
+  
+  a img {
+	border: none;          /* garante que a imagem não receba borda */
+	outline: none;
+}
+  
+
 /*Fontes redimensionáveis*/
 .fs4 { font-size: calc(4px + 0.4vw) }
 .fs5 { font-size: calc(5px + 0.5vw) }
