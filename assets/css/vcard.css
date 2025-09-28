@@ -75,7 +75,7 @@ footer {
 	transform: translate(-50%, -50%);
 	border-radius: 50%;
 	object-fit: cover;
-	border: 7px solid #fff;
+	border: 3px solid #fff;
 	box-shadow: 0 4px 12px rgba(0,0,0,.2);
 	height: 60%;
 	width: auto;
