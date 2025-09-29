@@ -116,9 +116,9 @@ tr.espaco td {
 	transition: background 0.3s ease;
 }
 
-		.botao:hover {
-			background-color: #005fa3;
-		} 
+	.botao:hover {
+		background-color: #005fa3;
+	} 
 
 .entrelinhas {
 	padding-top: 9vw;
@@ -155,17 +155,49 @@ tr.espaco td {
 	background: transparent;
 }
 
-a {
+a,
+a:link,
+a:visited,
+a:hover,
+a:active  {
 	text-decoration: none; /* remove sublinhado do texto */
+	color: inherit; /* mantém a cor em qualquer estado */
 	border: none;          /* remove borda do link */
 	outline: none;         /* remove contorno ao focar */
-}
+}  
   
   a img {
 	border: none;          /* garante que a imagem não receba borda */
 	outline: none;
 }
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
   
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: max-content;
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 9px 9px;
+	border-radius: 3px;
+	position: absolute;
+	z-index: 10;
+	top: 100%; /* aparece abaixo do ícone */
+	left: 0;
+	/* transform: translateX(-50%); */
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+  
+	.tooltip:hover .tooltiptext {
+		visibility: visible;
+		opacity: 1;
+	}  
 
 /*Fontes redimensionáveis*/
 .fs4 { font-size: calc(4px + 0.4vw) }
