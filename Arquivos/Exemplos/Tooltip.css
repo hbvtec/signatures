@@ -21,8 +21,8 @@ css
   border-radius: 4px;
   position: absolute;
   z-index: 10;
-  bottom: 125%; /* aparece acima do ícone */
-  left: 50%;
+  top: 125%; /* aparece acima do ícone */
+  /* left: 50%; */
   transform: translateX(-50%);
   opacity: 0;
   transition: opacity 0.3s;
