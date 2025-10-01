@@ -1,0 +1,40 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:João da Silva
+N:Silva;João;Carlos;Dr.;Jr.
+NICKNAME:Joca
+TITLE:Gerente de Projetos
+ORG:Tech Solutions Ltda;Desenvolvimento
+ROLE:Gestão de Equipes de Software
+
+PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQAAAQABAAD...FAKEBASE64...==
+LOGO;ENCODING=b;TYPE=PNG:iVBORw0KGgoAAAANSUhEUgAA...FAKEBASE64...==
+
+TEL;TYPE=CELL:+55-11-99999-9999
+TEL;TYPE=WORK:+55-11-3333-3333
+TEL;TYPE=HOME:+55-11-2222-2222
+FAX;TYPE=WORK:+55-11-4444-4444
+
+EMAIL;TYPE=WORK:joao.silva@techsolutions.com
+EMAIL;TYPE=HOME:joca@email.com
+
+ADR;TYPE=WORK:;;Av. Paulista, 1000;São Paulo;SP;01310-100;Brasil
+ADR;TYPE=HOME:;;Rua das Flores, 123;Rio de Janeiro;RJ;22000-000;Brasil
+
+URL;TYPE=WORK:https://www.techsolutions.com
+URL;TYPE=HOME:https://www.joaosilva.com
+
+BDAY:1985-06-20
+ANNIVERSARY:2010-12-15
+
+IMPP;X-SERVICE-TYPE=Skype:skype:joaosilva123?call
+IMPP;X-SERVICE-TYPE=WhatsApp:tel:+551199999999
+
+NOTE:Profissional com mais de 15 anos de experiência em gestão de projetos e liderança de equipes multidisciplinares.
+
+CATEGORIES:Trabalho,Gestão,Tecnologia
+
+REV:2025-09-30T12:00:00Z
+UID:550e8400-e29b-41d4-a716-446655440000
+
+END:VCARD

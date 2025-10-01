@@ -1,0 +1,52 @@
+<?php
+// Defina o diretório onde as imagens serão salvas
+$uploadDir = "uploads/";
+
+// Defina o nome fixo ou gerado da imagem (sem extensão ainda)
+$nomeArquivo = "foto_usuario"; // você pode trocar dinamicamente
+
+// Verifique se o formulário foi enviado
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Verifica se existe arquivo enviado
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === 0) {
+        $arquivoTmp = $_FILES['imagem']['tmp_name'];
+        $arquivoNome = $_FILES['imagem']['name'];
+        $arquivoTamanho = $_FILES['imagem']['size'];
+
+        // Extrai a extensão do arquivo
+        $extensao = strtolower(pathinfo($arquivoNome, PATHINFO_EXTENSION));
+
+        // Tipos permitidos
+        $permitidos = ['jpg', 'jpeg', 'png'];
+
+        // Verifica extensão
+        if (!in_array($extensao, $permitidos)) {
+            die("Erro: apenas arquivos JPG e PNG são permitidos.");
+        }
+
+        // Verifica tamanho (500KB = 512000 bytes)
+        if ($arquivoTamanho > 512000) {
+            die("Erro: o arquivo excede o tamanho máximo de 500KB.");
+        }
+
+        // Define o caminho final com o nome definido
+        $caminhoFinal = $uploadDir . $nomeArquivo . "." . $extensao;
+
+        // Move o arquivo para a pasta de destino
+        if (move_uploaded_file($arquivoTmp, $caminhoFinal)) {
+            echo "Upload concluído com sucesso! Arquivo salvo em: " . $caminhoFinal;
+        } else {
+            echo "Erro ao salvar o arquivo.";
+        }
+    } else {
+        echo "Nenhum arquivo enviado ou ocorreu um erro no upload.";
+    }
+}
+?>
+
+<!-- Formulário HTML -->
+<form method="post" enctype="multipart/form-data">
+    <label for="imagem">Selecione a foto (JPG ou PNG, máx 500KB):</label>
+    <input type="file" name="imagem" id="imagem" accept=".jpg, .jpeg, .png" required>
+    <button type="submit">Enviar</button>
+</form>

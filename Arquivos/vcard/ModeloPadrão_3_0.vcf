@@ -1,0 +1,52 @@
+BEGIN:VCARD
+VERSION:3.0
+
+FN:Nome Completo
+N:Sobrenome;Nome;Middle;Prefixo;Sufixo
+
+NICKNAME:Apelido
+TITLE:Cargo ou Função
+ORG:Nome da Empresa;Departamento
+ROLE:Descrição do papel/função na empresa
+
+PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQAAAQABAAD...   ; Base64 da foto
+LOGO;ENCODING=b;TYPE=PNG:...                               ; Logo da empresa
+
+TEL;TYPE=CELL:+55-11-99999-9999
+TEL;TYPE=HOME:+55-11-2222-2222
+TEL;TYPE=WORK,VOICE:+55-11-3333-3333
+FAX;TYPE=WORK:+55-11-4444-4444
+
+EMAIL;TYPE=HOME:emailpessoal@exemplo.com
+EMAIL;TYPE=WORK:emailtrabalho@empresa.com
+
+ADR;TYPE=WORK:;;Rua Exemplo, 123;São Paulo;SP;01000-000;Brasil
+ADR;TYPE=HOME:;;Av. Exemplo, 456;Rio de Janeiro;RJ;22000-000;Brasil
+
+URL;TYPE=WORK:https://empresa.com
+URL;TYPE=HOME:https://meusitepessoal.com
+*****
+URL;TYPE=Facebook:https://www.facebook.com/seuusuario
+URL;TYPE=LinkedIn:https://www.linkedin.com/in/seuusuario
+URL;TYPE=Instagram:https://www.instagram.com/seuusuario
+
+ou de uma forma mais genérica
+
+URL:https://www.linkedin.com/in/seuusuario
+URL:https://www.instagram.com/seuusuario
+*****
+
+BDAY:1985-06-20
+ANNIVERSARY:2010-12-15
+
+IMPP;X-SERVICE-TYPE=Skype:skype:usuario123?call
+IMPP;X-SERVICE-TYPE=WhatsApp:tel:+551199999999
+
+NOTE:Observações sobre o contato, pode ser texto longo.
+
+CATEGORIES:Amigos,Trabalho,VIP
+
+REV:2025-09-30T12:00:00Z   ; Data/hora da última revisão do cartão
+UID:550e8400-e29b-41d4-a716-446655440000   ; Identificador único
+
+END:VCARD
