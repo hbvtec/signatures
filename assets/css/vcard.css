@@ -48,7 +48,7 @@ footer {
 .NossaLogo {
 	position: absolute;
 	top: 1vw;	/* distância do topo */
-	left: 1vw;	/* distância da esquerda */
+	left: 2vw;	/* distância da esquerda */
 	height: 30%;	/* ajuste o tamanho */
 	width: auto;
 	z-index: 0;	/* acima da marca d’água, mas abaixo do avatar se quiser */
