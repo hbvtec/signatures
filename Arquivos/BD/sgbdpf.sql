@@ -1,30 +1,78 @@
--- Criar o banco de dados somente se não existir
-create database if not exists sgbdpf
+-- criar o banco de dados somente se não existir
+create database if not exists bdcard
 	default character set utf8mb4
     default collate utf8mb4_general_ci;
 
--- Selecionar o banco
-use sgbdpf;
+-- selecionar o banco
+use bdcard;
+
+-- 1. tabela de login (genérica)
+create table if not exists tblacesso (
+    id_login	int auto_increment primary key,
+    cpf_cnpj	varchar(20) unique not null,   -- pode armazenar cpf ou cnpj
+    pwd_hash	varchar(255) not null,
+    dt_inclusao	date default current_date,
+	dt_validade	date not null,
+	ativo		enum('S', 'N') default 'S'
+) engine=innodb;
+
+-- 2. pessoa física
+create table if not exists tblpessoa (
+    id_pessoa	int auto_increment primary key,
+    id_login	int,  -- cada pessoa física tem um login
+    nm_completo	varchar(50) not null,
+    dt_nasc		date,
+    foreign key (id_login) references tblacesso(id_login) on delete cascade
+);
+
+-- 3. empresa (pessoa jurídica)
+create table if not exists tblempresa (
+    id_empresa	int auto_increment primary key,
+    id_login 	int unique, -- cada empresa tem um login
+    rs			varchar(150) not null,
+	nf			varchar(150) not null,
+    foreign key (id_login) references tblacesso(id_login)
+);
+
+-- 4. funcionário (ligação entre pessoa física e empresa)
+create table if not exists tblfunc (
+    id_funcionario	int auto_increment primary key,
+    id_pessoa		int not null,
+    id_empresa		int not null,
+	setor			varchar(30),
+    cargo			varchar(100),
+    data_admissao	date,
+	ativo			enum('S', 'N') default 'S',
+    foreign key (id_pessoa) references tblpessoa(id_pessoa),
+    foreign key (id_empresa) references tblempresa(id_empresa),
+    unique (id_pessoa, id_empresa) -- evita duplicidade de vínculo
+);
 
 create table if not exists tblpessoa (
 	id_pessoa	int auto_increment primary key,
-	cpf			varchar(11)	unique not null,
+	id_login	int,
+	foreign key (id_login) references tbllogin(id_login),
+	foreign key (id_func) references tblfuncionario(id_func),
 	nm_pessoa	varchar(30)	not null,
 	dt_nasc		date not null,
-	photo		varchar(16),
-	codcountry	varchar(3) not null,
+	photo		varchar(16)
+) engine=innodb;
+
+create table if not exists tbltelefone (
+	id_tel		int auto_increment primary key,
+	foreign key (id_login) references tbllogin(id_login),
 	tel1		varchar(11),
-	tel2		varchar(11),
+	tel2		varchar(11)
+) engine=innodb;
+
+create table if not exists tblemail (
 	email1		varchar(50),
 	email2		varchar(50),
+) engine=innodb;
+
 	midiasoc1	varchar(150),
 	midiasoc2	varchar(150),
 	midiasoc3	varchar(150),
-	dt_inclusao	date not null,
-	dt_validade	date not null,
-	passwd		varchar(15) not null,
-	ativo		enum('S', 'N') default 'S'
-) ENGINE=InnoDB;
 
 create table if not exists tblacesso (
 	id_acesso	int auto_increment primary key,
@@ -32,126 +80,131 @@ create table if not exists tblacesso (
 	dt_inclusao	date not null,
 	dt_validade	date not null,
 	passwd		varchar(15) not null,
-	ativo		enum('S', 'N') default 'S'
-) engine=InnoDB;
+	ativo		enum('s', 'n') default 's'
+) engine=innodb;
 
 
--- Criar tabela de login
-CREATE TABLE IF NOT EXISTS tbllogin (
+-- criar tabela de login
+create table if not exists tbllogin (
     id_login	int		auto_increment	primary key,
-    nmLogin VARCHAR(20) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    telefone VARCHAR(20),
-    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+    nmlogin varchar(20) not null,
+    email varchar(100) unique not null,
+    telefone varchar(20),
+    criado_em timestamp default current_timestamp
+) engine=innodb;
 
--- Criar tabela de produtos
-CREATE TABLE IF NOT EXISTS produtos (
-    id_produto INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    preco DECIMAL(10,2) NOT NULL,
-    estoque INT DEFAULT 0
-) ENGINE=InnoDB;
+-- criar tabela de produtos
+create table if not exists produtos (
+    id_produto int auto_increment primary key,
+    nome varchar(100) not null,
+    preco decimal(10,2) not null,
+    estoque int default 0
+) engine=innodb;
 
--- Criar tabela de pedidos
-CREATE TABLE IF NOT EXISTS pedidos (
-    id_pedido INT AUTO_INCREMENT PRIMARY KEY,
-    id_cliente INT NOT NULL,
-    data_pedido DATE NOT NULL,
-    status ENUM('pendente','pago','enviado','cancelado') DEFAULT 'pendente',
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-) ENGINE=InnoDB;
+-- criar tabela de pedidos
+create table if not exists pedidos (
+    id_pedido int auto_increment primary key,
+    id_cliente int not null,
+    data_pedido date not null,
+    status enum('pendente','pago','enviado','cancelado') default 'pendente',
+    foreign key (id_cliente) references clientes(id_cliente)
+        on delete cascade
+        on update cascade
+) engine=innodb;
 
--- Criar tabela de itens do pedido (relação N:N entre pedidos e produtos)
-CREATE TABLE IF NOT EXISTS itens_pedido (
-    id_item INT AUTO_INCREMENT PRIMARY KEY,
-    id_pedido INT NOT NULL,
-    id_produto INT NOT NULL,
-    quantidade INT NOT NULL,
-    preco_unitario DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
-    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE
-) ENGINE=InnoDB;
+-- criar tabela de itens do pedido (relação n:n entre pedidos e produtos)
+create table if not exists itens_pedido (
+    id_item int auto_increment primary key,
+    id_pedido int not null,
+    id_produto int not null,
+    quantidade int not null,
+    preco_unitario decimal(10,2) not null,
+    foreign key (id_pedido) references pedidos(id_pedido)
+        on delete cascade
+        on update cascade,
+    foreign key (id_produto) references produtos(id_produto)
+        on delete restrict
+        on update cascade
+) engine=innodb;
 
--- Criar tabela de clientes
-CREATE TABLE IF NOT EXISTS clientes (
-    id_cliente INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    telefone VARCHAR(20),
-    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB;
+-- criar tabela de clientes
+create table if not exists clientes (
+    id_cliente int auto_increment primary key,
+    nome varchar(100) not null,
+    email varchar(100) unique not null,
+    telefone varchar(20),
+    criado_em timestamp default current_timestamp
+) engine=innodb;
 
--- Criar tabela de produtos
-CREATE TABLE IF NOT EXISTS produtos (
-    id_produto INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
-    preco DECIMAL(10,2) NOT NULL,
-    estoque INT DEFAULT 0
-) ENGINE=InnoDB;
+-- criar tabela de produtos
+create table if not exists produtos (
+    id_produto int auto_increment primary key,
+    nome varchar(100) not null,
+    preco decimal(10,2) not null,
+    estoque int default 0
+) engine=innodb;
 
--- Criar tabela de pedidos
-CREATE TABLE IF NOT EXISTS pedidos (
-    id_pedido INT AUTO_INCREMENT PRIMARY KEY,
-    id_cliente INT NOT NULL,
-    data_pedido DATE NOT NULL,
-    status ENUM('pendente','pago','enviado','cancelado') DEFAULT 'pendente',
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE
-) ENGINE=InnoDB;
+-- criar tabela de pedidos
+create table if not exists pedidos (
+    id_pedido int auto_increment primary key,
+    id_cliente int not null,
+    data_pedido date not null,
+    status enum('pendente','pago','enviado','cancelado') default 'pendente',
+    foreign key (id_cliente) references clientes(id_cliente)
+        on delete cascade
+        on update cascade
+) engine=innodb;
 
--- Criar tabela de itens do pedido (relação N:N entre pedidos e produtos)
-CREATE TABLE IF NOT EXISTS itens_pedido (
-    id_item INT AUTO_INCREMENT PRIMARY KEY,
-    id_pedido INT NOT NULL,
-    id_produto INT NOT NULL,
-    quantidade INT NOT NULL,
-    preco_unitario DECIMAL(10,2) NOT NULL,
-    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
-    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
-        ON DELETE RESTRICT
-        ON UPDATE CASCADE
-) ENGINE=InnoDB;
+-- criar tabela de itens do pedido (relação n:n entre pedidos e produtos)
+create table if not exists itens_pedido (
+    id_item int auto_increment primary key,
+    id_pedido int not null,
+    id_produto int not null,
+    quantidade int not null,
+    preco_unitario decimal(10,2) not null,
+    foreign key (id_pedido) references pedidos(id_pedido)
+        on delete cascade
+        on update cascade,
+    foreign key (id_produto) references produtos(id_produto)
+        on delete restrict
+        on update cascade
+) engine=innodb;
 
 
-CREATE TABLE funcionarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-	cpf VARCHAR(11) NOT NULL,
-    nome VARCHAR(100) NOT NULL,
-    telefone1 VARCHAR(20),
-    telefone2 VARCHAR(20),
-    email VARCHAR(100),
-    url VARCHAR(200),
-    empresa VARCHAR(150),
-    cargo VARCHAR(100),
-    descricao TEXT,
-    social1 VARCHAR(200),
-    social2 VARCHAR(200),
-    foto VARCHAR(200) -- caminho da foto no servidor
+create table funcionarios (
+    id int auto_increment primary key,
+	cpf varchar(11) not null,
+    nome varchar(100) not null,
+    telefone1 varchar(20),
+    telefone2 varchar(20),
+    email varchar(100),
+    url varchar(200),
+    empresa varchar(150),
+    cargo varchar(100),
+    descricao text,
+    social1 varchar(200),
+    social2 varchar(200),
+    foto varchar(200) -- caminho da foto no servidor
 );
 
-INSERT INTO funcionarios (cpf, nome, telefone1, telefone2, email, url, empresa, cargo, descricao, social1, social2, foto)
-VALUES (
+insert into funcionarios (cpf, nome, telefone1, telefone2, email, url, empresa, cargo, descricao, social1, social2, foto)
+values (
 	'99999999999',
-    'Maria Silva',
+    'maria silva',
     '+5511999999999',
     '+5511888888888',
     'maria.silva@empresa.com',
     'https://www.empresa.com',
-    'Minha Empresa Ltda',
-    'Gerente de Projetos',
-    'Empresa especializada em soluções web.',
+    'minha empresa ltda',
+    'gerente de projetos',
+    'empresa especializada em soluções web.',
     'https://www.linkedin.com/in/mariasilva',
     'https://www.instagram.com/mariasilva',
     'fotos/maria.jpg'
 );
+
+
+
+
+
 
