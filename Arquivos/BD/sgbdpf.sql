@@ -6,7 +6,7 @@ create database if not exists bdcard
 -- selecionar o banco
 use bdcard;
 
--- 1. tabela de login (genérica)
+-- 1. Tabela de Login
 create table if not exists tblacesso (
     id_login	int auto_increment primary key,
     cpf_cnpj	varchar(20) unique not null,   -- pode armazenar cpf ou cnpj
@@ -16,53 +16,53 @@ create table if not exists tblacesso (
 	ativo		enum('S', 'N') default 'S'
 ) engine=innodb;
 
--- 2. pessoa física
+-- 2. Pessoa Física
 create table if not exists tblpessoa (
     id_pessoa	int auto_increment primary key,
-    id_login	int,  -- cada pessoa física tem um login
+    id_login	int	unique,  -- cada pessoa física tem um login
     nm_completo	varchar(50) not null,
     dt_nasc		date,
     foreign key (id_login) references tblacesso(id_login) on delete cascade
 );
 
--- 3. empresa (pessoa jurídica)
+-- 3. Pessoa Jurídica (Empresas)
 create table if not exists tblempresa (
     id_empresa	int auto_increment primary key,
     id_login 	int unique, -- cada empresa tem um login
-    rs			varchar(150) not null,
-	nf			varchar(150) not null,
+    rsocial		varchar(150) not null,
+	nmfantasia	varchar(150) not null,
     foreign key (id_login) references tblacesso(id_login)
 );
 
--- 4. funcionário (ligação entre pessoa física e empresa)
+-- 4. Funcionários (ligação entre Empresas e Pessoas)
 create table if not exists tblfunc (
     id_funcionario	int auto_increment primary key,
     id_pessoa		int not null,
     id_empresa		int not null,
 	setor			varchar(30),
     cargo			varchar(100),
-    data_admissao	date,
+    dt_admissao		date,
+	dt_demissao		date,
 	ativo			enum('S', 'N') default 'S',
     foreign key (id_pessoa) references tblpessoa(id_pessoa),
     foreign key (id_empresa) references tblempresa(id_empresa),
     unique (id_pessoa, id_empresa) -- evita duplicidade de vínculo
 );
 
-create table if not exists tblpessoa (
-	id_pessoa	int auto_increment primary key,
-	id_login	int,
-	foreign key (id_login) references tbllogin(id_login),
-	foreign key (id_func) references tblfuncionario(id_func),
-	nm_pessoa	varchar(30)	not null,
-	dt_nasc		date not null,
-	photo		varchar(16)
+create table if not exists tblemail (
+	id_email	int auto_increment primary key,
+	id_login	int not null,
+	email1		varchar(100),
+	email2		varchar(100),
+	foreign key (id_login) references tbllogin(id_login)
 ) engine=innodb;
 
 create table if not exists tbltelefone (
 	id_tel		int auto_increment primary key,
-	foreign key (id_login) references tbllogin(id_login),
-	tel1		varchar(11),
-	tel2		varchar(11)
+	id_login	int not null,
+	telefone	varchar(11) not null,
+	tipo		enum('home', 'work'),
+	foreign key (id_login) references tbllogin(id_login)
 ) engine=innodb;
 
 create table if not exists tblemail (
