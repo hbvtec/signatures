@@ -1,0 +1,15 @@
+<input type="checkbox" id="mostrar">
+<label for="mostrar">Ativar campo</label>
+
+<input type="text" class="campo" placeholder="Digite aqui...">
+
+
+css
+
+.campo {
+  display: none;
+}
+
+#mostrar:checked ~ .campo {
+  display: block;
+}

@@ -1,0 +1,28 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:Nome Completo
+N:Sobrenome;Nome;SegundoNome;Prefixo;Sufixo
+NICKNAME:Apelido
+PHOTO;MEDIATYPE=image/jpeg:http://exemplo.com/foto.jpg
+BDAY:19900101
+ANNIVERSARY:20000101
+GENDER:M
+EMAIL;TYPE=home:usuario@exemplo.com
+EMAIL;TYPE=work:trabalho@empresa.com
+TEL;TYPE=cell:+55-11-91234-5678
+TEL;TYPE=home:+55-11-4002-8922
+TEL;TYPE=work:+55-11-3322-4455
+ADR;TYPE=home:;;Rua Exemplo, 123;São Paulo;SP;01000-000;Brasil
+ADR;TYPE=work:;;Avenida Central, 456;Rio de Janeiro;RJ;20000-000;Brasil
+URL;TYPE=home:https://www.exemplo.com
+URL;TYPE=linkedin:https://www.linkedin.com/in/exemplo
+URL;TYPE=twitter:https://twitter.com/exemplo
+ORG:Empresa Exemplo S/A
+TITLE:Diretor de Tecnologia
+ROLE:Gestor de Projetos
+IMPP;X-SERVICE-TYPE=Skype:skype:usuario.skype
+IMPP;X-SERVICE-TYPE=WhatsApp:wa:5511912345678
+CATEGORIES:Amigos,Trabalho,TI
+NOTE:Observações gerais sobre o contato
+REV:20250101T120000Z
+END:VCARD
