@@ -21,3 +21,20 @@
 │
 ├── index.php                ← roteador principal
 └── .htaccess                ← regras de URL amigável (Apache)
+
+Organizado para segurança
+meusite/
+│
+├── app/             ← código PHP do sistema (classes, funções, conexão, etc.)
+├── includes/        ← arquivos compartilhados (header, footer, etc.)
+├── config/          ← arquivos de configuração (ex: db.php)
+├── public/          ← único diretório acessível via navegador
+│   ├── index.php
+│   ├── login.php
+│   ├── assets/
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── img/
+│   └── .htaccess
+└── vendor/          ← bibliotecas (caso use Composer)
+

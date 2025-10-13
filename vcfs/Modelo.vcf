@@ -1,0 +1,24 @@
+BEGIN:VCARD
+VERSION:3.0
+
+N;CHARSET=utf-8:e Silva;Marcelo Araújo;;;
+FN;CHARSET=utf-8:Marcelo Araújo e Silva
+
+PHOTO;ENCODING=b;TYPE=JPEG: <foto base64>
+
+ORG;CHARSET=utf-8:YOTZER
+TITLE;CHARSET=utf-8:Diretor
+NOTE;CHARSET=utf-8:Presidência
+
+LOGO;VALUE=uri:https://qr.view.page/uploads/vcard/jmP43h_a015e4519d582dac
+ .png
+
+ADR;WORK;POSTAL;CHARSET=utf-8:; ;;;;;
+
+URL:http://yotzer3d.com.br
+
+TEL:48 9 9671-8916
+
+EMAIL;INTERNET:sushigrillrs@gmail.com
+
+END:VCARD

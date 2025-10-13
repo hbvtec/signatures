@@ -1,0 +1,5 @@
+| Comando    | Momento de execução  | Exemplo                   |
+| ---------- | -------------------- | ------------------------- |
+| `WHERE`    | Antes do agrupamento | `WHERE valor > 100`       |
+| `GROUP BY` | Agrupa os dados      | `GROUP BY vendedor`       |
+| `HAVING`   | Filtra grupos        | `HAVING SUM(valor) > 300` |

@@ -1,0 +1,203 @@
+Perfeito ✅
+Aqui vai uma **lista organizada e completa dos tipos de campos e principais atributos** usados em **formulários HTML**, com observações úteis para cada um.
+
+---
+
+## 🧩 **1. Campos de entrada (`<input>`)**
+
+### Tipos mais comuns (`type`)
+
+| Tipo             | Descrição                      | Exemplo de uso            |
+| ---------------- | ------------------------------ | ------------------------- |
+| `text`           | Texto simples                  | Nome, cidade              |
+| `password`       | Oculta caracteres              | Senhas                    |
+| `email`          | Valida formato de e-mail       | E-mail                    |
+| `number`         | Aceita apenas números          | Idade, quantidade         |
+| `tel`            | Entrada de telefone            | Telefone                  |
+| `url`            | URLs válidas                   | Website                   |
+| `search`         | Campo de busca                 | Pesquisas                 |
+| `date`           | Seleciona uma data             | Data de nascimento        |
+| `time`           | Seleciona uma hora             | Horário de entrada        |
+| `datetime-local` | Data e hora local              | Agendamento               |
+| `month`          | Seleciona mês/ano              | Competência               |
+| `week`           | Seleciona semana               | Semana do ano             |
+| `color`          | Escolhe cor                    | Seletor de cor            |
+| `range`          | Controle deslizante            | Nível, volume             |
+| `checkbox`       | Múltiplas opções independentes | Preferências              |
+| `radio`          | Opções exclusivas              | Sexo, plano               |
+| `file`           | Upload de arquivo              | Envio de imagem/documento |
+| `hidden`         | Campo oculto                   | IDs, tokens               |
+| `submit`         | Envia formulário               | Botão de envio            |
+| `reset`          | Limpa o formulário             | Botão de reset            |
+| `button`         | Botão genérico                 | Ações personalizadas      |
+
+---
+
+## 🧾 **2. Campos de texto avançados**
+
+| Elemento                  | Descrição                            |
+| ------------------------- | ------------------------------------ |
+| `<textarea>`              | Campo de texto multilinha            |
+| `<select>`                | Lista suspensa (menu de seleção)     |
+| `<option>`                | Item dentro do select                |
+| `<optgroup>`              | Agrupa opções no select              |
+| `<datalist>`              | Sugestões automáticas para `<input>` |
+| `<label>`                 | Texto associado a um campo           |
+| `<fieldset>` / `<legend>` | Agrupa campos e define legendas      |
+
+---
+
+## ⚙️ **3. Principais atributos**
+
+| Atributo       | Função                                   | Exemplo                         |
+| -------------- | ---------------------------------------- | ------------------------------- |
+| `name`         | Nome do campo (usado no envio dos dados) | `name="email"`                  |
+| `id`           | Identificação única no HTML              | `id="userEmail"`                |
+| `value`        | Valor inicial ou padrão                  | `value="Brasil"`                |
+| `placeholder`  | Texto de dica dentro do campo            | `placeholder="Digite seu nome"` |
+| `required`     | Campo obrigatório                        | `required`                      |
+| `readonly`     | Somente leitura                          | `readonly`                      |
+| `disabled`     | Desativado (não enviado)                 | `disabled`                      |
+| `maxlength`    | Máximo de caracteres                     | `maxlength="50"`                |
+| `min` / `max`  | Limite numérico ou de data               | `min="0" max="100"`             |
+| `step`         | Incremento em campos numéricos           | `step="0.01"`                   |
+| `pattern`      | Expressão regular para validação         | `pattern="[A-Za-z]+"`           |
+| `checked`      | Pré-seleciona checkbox/radio             | `checked`                       |
+| `multiple`     | Permite múltiplos arquivos/opções        | `multiple`                      |
+| `accept`       | Tipos de arquivo aceitos (`file`)        | `accept=".jpg,.png"`            |
+| `autocomplete` | Liga/desliga autocompletar               | `autocomplete="off"`            |
+| `autofocus`    | Foca o campo ao carregar a página        | `autofocus`                     |
+| `form`         | Associa o campo a outro `<form>`         | `form="form1"`                  |
+| `list`         | Liga o campo a um `<datalist>`           | `list="opcoes"`                 |
+
+---
+
+## 🧠 **4. Campos HTML5 úteis e menos usados**
+
+| Tipo             | Descrição                            |
+| ---------------- | ------------------------------------ |
+| `image`          | Botão de envio com imagem            |
+| `hidden`         | Valor invisível no formulário        |
+| `datetime-local` | Data e hora (sem fuso)               |
+| `week` / `month` | Entrada de período                   |
+| `range`          | Slider com valores mínimos e máximos |
+
+---
+
+## 🧱 **5. Estrutura básica de um formulário**
+
+```html
+<form action="enviar.php" method="post">
+  <label for="nome">Nome:</label>
+  <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+
+  <label for="email">E-mail:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="idade">Idade:</label>
+  <input type="number" id="idade" name="idade" min="0" max="120">
+
+  <label for="mensagem">Mensagem:</label>
+  <textarea id="mensagem" name="mensagem"></textarea>
+
+  <button type="submit">Enviar</button>
+</form>
+```
+
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulário Completo HTML</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: #f4f6f9;
+  }
+  fieldset {
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background: #fff;
+  }
+  legend {
+    font-weight: bold;
+    color: #007bff;
+  }
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  input, select, textarea, button {
+    margin-top: 5px;
+    padding: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+  }
+  input[type="checkbox"], input[type="radio"] {
+    width: auto;
+  }
+  button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<h1>Formulário Completo de Teste</h1>
+
+<form action="#" method="post" enctype="multipart/form-data" autocomplete="on">
+
+  <!-- DADOS PESSOAIS -->
+  <fieldset>
+    <legend>Dados Pessoais</legend>
+
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" maxlength="50" required autofocus>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
+
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha" minlength="6" maxlength="20" required>
+
+    <label for="telefone">Telefone:</label>
+    <input type="tel" id="telefone" name="telefone" pattern="[0-9]{2}-[0-9]{5}-[0-9]{4}" placeholder="99-99999-9999">
+
+    <label for="url">Website:</label>
+    <input type="url" id="url" name="url" placeholder="https://">
+
+    <label for="nascimento">Data de Nascimento:</label>
+    <input type="date" id="nascimento" name="nascimento">
+
+    <label for="horario">Horário preferido:</label>
+    <input type="time" id="horario" name="horario">
+
+    <label for="datahora">Data e hora (local):</label>
+    <input type="datetime-local" id="datahora" name="datahora">
+
+    <label for="mes">Mês de referência:</label>
+    <input type="month" id="mes" name="mes">
+
+    <label for="semana">Semana do ano:</label>
+    <input type="week" id="semana" name="semana">
+
+    <label for="idade">Idade:</label>
+    <input type="number" id="idade" name="idade" min="0" max="120" step="1">
+
+    <label for="cor">Cor favorita:</lab
+
+---

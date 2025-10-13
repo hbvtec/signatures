@@ -1,0 +1,8 @@
+INSERT INTO sua_tabela (data_emissao, data_validade)
+VALUES (CURDATE(), DATE_ADD(CURDATE(), INTERVAL 1 YEAR));
+
+SELECT DATE_FORMAT(data_registro, '%d/%m/%Y %H:%i') AS data_formatada -- sempre usar alias
+FROM sua_tabela;
+
+%Y - ano com 4 dígitos
+%y - ano com 2 dígitos
