@@ -12,7 +12,7 @@ USE bdcard;
 CREATE TABLE if NOT EXISTS tblaccess (
 	id_login		INT AUTO_INCREMENT PRIMARY KEY,
 	cpf_cnpj		VARCHAR(20) UNIQUE NOT NULL, -- pode armazenar cpf ou cnpj
-	pwd_hash		VARCHAR(255) NOT NULL, -- senha criptografada
+	-- pwd_hash		VARCHAR(255) NOT NULL, -- senha criptografada
 	tipo			ENUM('F', 'J') DEFAULT 'F',
  	dt_inc		DATE DEFAULT CURRENT_DATE,
 	dt_val		DATE NOT NULL,

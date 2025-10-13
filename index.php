@@ -12,13 +12,13 @@
 		Homepage
   -->
   <div id="LogoYotzer" class="LogoYotzer">
-    <img src="assets/imgs/LogoYotzer.png" class="LogoYotzer"><br/>
+    <img src="assets/imgs/Yotzer/LogoYotzer.fw.png" class="LogoYotzer"><br/>
   </div>
-  <div name="texto" class="colordiv">
-    teste 123 <br/>
+  <div name="navegacao" class="colordiv">
+    O <br/>
   </div>
   <div name="rodape">
-      rodape <br/>
+      <a href="pages/cadpessoa.php" target="_self">teste</a> <br/>
   </div>
 </body>
 </html>
